@@ -8,11 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mensagem = $_POST['mensagem'];
 
     try {
-        // Salva no banco de dados da Escala Web
+        
         $stmt = $pdo->prepare("INSERT INTO Contatos (nome, email, telefone, mensagem) VALUES (?, ?, ?, ?)");
         $stmt->execute([$nome, $email, $telefone, $mensagem]);
 
-        // Dispara e-mail via mail()
+
         $to = "teste@escalaweb.com.br";
         $subject = "Novo Contato - " . $nome;
         $body = "Nome: $nome\nE-mail: $email\nTelefone: $telefone\nMensagem:\n$mensagem";
